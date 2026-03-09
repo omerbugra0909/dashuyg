@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DashUyg</title>
+
+    
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar {
+            min-width: 220px;
+            max-width: 220px;
+            background-color: #343a40;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar a {
+            color: #ddd;
+            text-decoration: none;
+            display: block;
+            padding: 12px 20px;
+        }
+
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #495057;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .topbar {
+            height: 60px;
+            background-color: #fff;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .card-dashboard {
+            border: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.15rem 1.75rem rgba(58,59,69,.15);
+            transition: transform 0.2s;
+        }
+
+        .card-dashboard:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="sidebar d-flex flex-column">
+        <h3 class="text-center py-4 mb-0">DashUyg</h3>
+        <a href="@Url.Action("Index","Home")" class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")">Dashboard</a>
+        <a href="@Url.Action("Index","Kitap")" class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Kitap" ? "active" : "")">Kitaplar</a>
+        <a href="@Url.Action("Index","Kategori")" class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Kategori" ? "active" : "")">Kategoriler</a>
+    </div>
+
+    
+    <div class="main-content">
+       
+        <div class="topbar">
+            <div>
+                <h5>@ViewData["Title"]</h5>
+            </div>
+            <div>
+                <span class="text-muted">@DateTime.Now.ToString("dd MMM yyyy")</span>
+            </div>
+        </div>
+
+        
+        <div class="mt-4">
+            @RenderBody()
+        </div>
+    </div>
+
+    
+    <footer class="bg-light text-center py-3 mt-auto border-top">
+        &copy; @DateTime.Now.Year - DashUyg
+    </footer>
+
+   
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
