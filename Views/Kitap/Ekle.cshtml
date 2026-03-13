@@ -23,7 +23,7 @@
 
     <div class="form-group mb-3">
         <label>Kategori</label>
-        <select asp-for="KategoriId" class="form-control" asp-items="@(new SelectList(ViewBag.Kategoriler, "Id", "Ad"))">
+        <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.Kategoriler">
             <option value="">-- Kategori Seç --</option>
         </select>
         <span asp-validation-for="KategoriId" class="text-danger"></span>

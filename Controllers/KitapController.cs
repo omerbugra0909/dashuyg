@@ -15,7 +15,7 @@ namespace dashuyg.Controllers
             _context = context;
         }
 
-        // LIST
+       
         public async Task<IActionResult> Index()
         {
             var kitaplar = await _context.Kitaplar
@@ -24,7 +24,7 @@ namespace dashuyg.Controllers
             return View(kitaplar);
         }
 
-        // CREATE
+        
         public async Task<IActionResult> Ekle()
         {
             ViewBag.Kategoriler = new SelectList(await _context.Kategoriler.ToListAsync(), "Id", "Ad");
@@ -46,7 +46,7 @@ namespace dashuyg.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // UPDATE
+      
         public async Task<IActionResult> Guncelle(int id)
         {
             var kitap = await _context.Kitaplar.FindAsync(id);
@@ -78,7 +78,7 @@ namespace dashuyg.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // DELETE
+       
         public async Task<IActionResult> Sil(int id)
         {
             var kitap = await _context.Kitaplar.FindAsync(id);

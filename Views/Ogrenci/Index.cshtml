@@ -1,0 +1,57 @@
+@model IEnumerable<Ogrenci>
+
+@{
+    ViewData["Title"] = "Öğrenciler";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">🎓 Öğrenci Yönetimi</h2>
+        <a asp-action="Ekle" class="btn btn-success btn-lg">➕ Yeni Öğrenci</a>
+    </div>
+
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Öğrenciler</h5>
+        </div>
+
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th style="width:80px">ID</th>
+                        <th>Ad Soyad</th>
+                        <th style="width:90px">Yaş</th>
+                        <th style="width:140px">Sınıf</th>
+                        <th style="width:220px">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!Model.Any())
+                    {
+                        <tr>
+                            <td colspan="5" class="text-center p-4">
+                                Henüz öğrenci eklenmemiş.
+                            </td>
+                        </tr>
+                    }
+
+                    @foreach (var o in Model)
+                    {
+                        <tr>
+                            <td><span class="badge bg-secondary">@o.Id</span></td>
+                            <td class="fw-semibold">@o.Ad @o.Soyad</td>
+                            <td>@o.Yas</td>
+                            <td>@o.Sinif?.Ad</td>
+                            <td>
+                                <a asp-action="Guncelle" asp-route-id="@o.Id" class="btn btn-warning btn-sm">✏️ Düzenle</a>
+                                <a asp-action="Sil" asp-route-id="@o.Id" class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Silmek istediğine emin misin?')">🗑 Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

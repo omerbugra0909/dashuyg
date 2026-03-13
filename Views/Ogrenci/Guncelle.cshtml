@@ -1,0 +1,49 @@
+@model Ogrenci
+
+@{
+    ViewData["Title"] = "Öğrenci Güncelle";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">✏️ Öğrenci Güncelle</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Guncelle" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Ad" class="form-label">Ad</label>
+                    <input asp-for="Ad" class="form-control" />
+                    <span asp-validation-for="Ad" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Soyad" class="form-label">Soyad</label>
+                    <input asp-for="Soyad" class="form-control" />
+                    <span asp-validation-for="Soyad" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Yas" class="form-label">Yaş</label>
+                    <input asp-for="Yas" class="form-control" type="number" min="0" />
+                    <span asp-validation-for="Yas" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="SinifId" class="form-label">Sınıf</label>
+                    <select asp-for="SinifId" asp-items="ViewBag.Siniflar" class="form-select"></select>
+                    <span asp-validation-for="SinifId" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-warning">Güncelle</button>
+                <a asp-action="Index" class="btn btn-secondary">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,29 @@
+@model Sinif
+
+@{
+    ViewData["Title"] = "Sınıf Ekle";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">➕ Yeni Sınıf</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Ekle" method="post">
+                <div class="mb-3">
+                    <label asp-for="Ad" class="form-label">Sınıf Adı</label>
+                    <input asp-for="Ad" class="form-control" />
+                    <span asp-validation-for="Ad" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <a asp-action="Index" class="btn btn-secondary">Geri</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -225,3 +225,4 @@
 /home/omer132/Masaüstü/dashuyg/bin/Debug/net9.0/runtimes/win-arm64/native/e_sqlite3.dll
 /home/omer132/Masaüstü/dashuyg/bin/Debug/net9.0/runtimes/win-x64/native/e_sqlite3.dll
 /home/omer132/Masaüstü/dashuyg/bin/Debug/net9.0/runtimes/win-x86/native/e_sqlite3.dll
+/home/omer132/Masaüstü/dashuyg/obj/Debug/net9.0/dashuyg.sourcelink.json

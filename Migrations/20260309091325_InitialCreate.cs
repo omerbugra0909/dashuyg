@@ -17,10 +17,10 @@ namespace dashuyg.Migrations
                 name: "Kategoriler",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Ad = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    OlusturmaTarihi = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Ad = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    OlusturmaTarihi = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,12 +31,12 @@ namespace dashuyg.Migrations
                 name: "Kitaplar",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Ad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Yazar = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SayfaSayisi = table.Column<int>(type: "int", nullable: false),
-                    KategoriId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Ad = table.Column<string>(type: "TEXT", nullable: false),
+                    Yazar = table.Column<string>(type: "TEXT", nullable: false),
+                    SayfaSayisi = table.Column<int>(type: "INTEGER", nullable: false),
+                    KategoriId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

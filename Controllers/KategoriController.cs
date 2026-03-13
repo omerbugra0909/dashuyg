@@ -14,7 +14,7 @@ namespace dashuyg.Controllers
             _context = context;
         }
 
-        // LIST
+       
         public async Task<IActionResult> Index()
         {
             var kategoriler = await _context.Kategoriler
@@ -23,7 +23,7 @@ namespace dashuyg.Controllers
             return View(kategoriler);
         }
 
-        // CREATE
+      
         public IActionResult Ekle()
         {
             return View();
@@ -40,7 +40,7 @@ namespace dashuyg.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // UPDATE
+        
         public async Task<IActionResult> Guncelle(int id)
         {
             var kategori = await _context.Kategoriler.FindAsync(id);
@@ -63,7 +63,7 @@ namespace dashuyg.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // DELETE
+        
         public async Task<IActionResult> Sil(int id)
         {
             var kategori = await _context.Kategoriler.FindAsync(id);
