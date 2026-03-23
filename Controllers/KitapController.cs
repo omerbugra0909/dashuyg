@@ -41,9 +41,18 @@ namespace dashuyg.Controllers
                 return View(kitap);
             }
 
-            _context.Kitaplar.Add(kitap);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _context.Kitaplar.Add(kitap);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Kitap eklenirken hata oluştu: " + ex.Message);
+                ViewBag.Kategoriler = new SelectList(await _context.Kategoriler.ToListAsync(), "Id", "Ad");
+                return View(kitap);
+            }
         }
 
       

@@ -39,9 +39,18 @@ namespace dashuyg.Controllers
                 return View(ogrenci);
             }
 
-            _context.Ogrenciler.Add(ogrenci);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                _context.Ogrenciler.Add(ogrenci);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Öğrenci eklenirken hata oluştu: " + ex.Message);
+                ViewBag.Siniflar = new SelectList(await _context.Siniflar.ToListAsync(), "Id", "Ad");
+                return View(ogrenci);
+            }
         }
 
         public async Task<IActionResult> Guncelle(int id)
